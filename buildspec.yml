@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+  pre_build:
+    commands:
+      - npm config set registry https://registry.npmjs.com/
+  build:
+    commands:
+      - npm install --omit=dev --loglevel=verbose
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - "**/*"
